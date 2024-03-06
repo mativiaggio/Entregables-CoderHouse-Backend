@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Samsung Galaxy s23 ultra DESCUENTO",
+    "description": "Ultimo celular samsung...",
+    "price": 1450000,
+    "thumbnail": "path/s23ultra.jpg",
+    "code": "SMGS23U",
+    "stock": 50
+  },
+  {
+    "id": 2,
+    "title": "Producto 2",
+    "description": "Descripcion Producto 2",
+    "price": 1545000,
+    "thumbnail": "path/Producto2.jpg",
+    "code": "PROD2",
+    "stock": 10000
+  },
+  {
+    "id": 3,
+    "title": "Producto 3",
+    "description": "Descripcion Producto 3",
+    "price": 1545000,
+    "thumbnail": "path/Producto3.jpg",
+    "code": "PROD3",
+    "stock": 1
+  },
+  {
+    "id": 4,
+    "title": "Producto 4",
+    "description": "Descripcion Producto 4",
+    "price": 1645000,
+    "thumbnail": "path/Producto4.jpg",
+    "code": "PROD4",
+    "stock": 4235
+  },
+  {
+    "id": 5,
+    "title": "Producto 5",
+    "description": "Descripcion Producto 5",
+    "price": 17445000,
+    "thumbnail": "path/Producto5.jpg",
+    "code": "PROD5",
+    "stock": 3241
+  },
+  {
+    "id": 6,
+    "title": "Producto 6",
+    "description": "Descripcion Producto 6",
+    "price": 1545000,
+    "thumbnail": "path/Producto6.jpg",
+    "code": "PROD6",
+    "stock": 2366
+  },
+  {
+    "id": 7,
+    "title": "Producto 7",
+    "description": "Descripcion Producto 7",
+    "price": 1545000,
+    "thumbnail": "path/Producto7.jpg",
+    "code": "PROD7",
+    "stock": 2345
+  },
+  {
+    "id": 8,
+    "title": "Producto 8",
+    "description": "Descripcion Producto 8",
+    "price": 1545000,
+    "thumbnail": "path/Producto8.jpg",
+    "code": "PROD8",
+    "stock": 525
+  },
+  {
+    "id": 9,
+    "title": "Producto 9",
+    "description": "Descripcion Producto 9",
+    "price": 1545000,
+    "thumbnail": "path/Producto9.jpg",
+    "code": "PROD9",
+    "stock": 23
+  },
+  {
+    "id": 10,
+    "title": "Producto 10",
+    "description": "Descripcion Producto 10",
+    "price": 1545000,
+    "thumbnail": "path/Producto10",
+    "code": "PROD10",
+    "stock": 3978
+  }
+]

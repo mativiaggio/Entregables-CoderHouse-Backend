@@ -1,0 +1,15 @@
+{
+  "name": "3-servidor-con-express",
+  "version": "1.0.0",
+  "description": "Tercer trabajo entregable del curso de backend de CoderHouse",
+  "main": "main.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matias Viaggio",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

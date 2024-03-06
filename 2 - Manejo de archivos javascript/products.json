@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "Samsung Galaxy s23 ultra DESCUENTO",
+    "description": "Ultimo celular samsung...",
+    "price": 1450000,
+    "thumbnail": "path/s23ultra.jpg",
+    "code": "SMGS23U",
+    "stock": 50
+  },
+  {
+    "id": 2,
+    "title": "Laptop Lenovo i7",
+    "description": "Laptop Lenovo procesador i7",
+    "price": 1545000,
+    "thumbnail": "path/lenovoi7.jpg",
+    "code": "LAPLENi7",
+    "stock": 10000
+  },
+  {
+    "id": 6,
+    "title": "error",
+    "description": "error",
+    "price": 1,
+    "thumbnail": "path/error.jpg",
+    "code": "AAA",
+    "stock": 1
+  }
+]
