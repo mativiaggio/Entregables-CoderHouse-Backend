@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect(
-    "mongodb+srv://matiasviaggio-admin:Mv43864182@coderhousebackend.vocmiqt.mongodb.net/backend"
+    "mongodb+srv://matiasviaggio-admin:hDyTCsrU5IQo4vkR@coderhousebackend.vocmiqt.mongodb.net/backend"
   )
   .then(() => {
     console.log("Mongoose conectado");
