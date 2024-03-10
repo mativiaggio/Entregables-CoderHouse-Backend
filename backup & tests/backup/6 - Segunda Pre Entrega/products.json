@@ -1,5 +1,6 @@
 [
   {
+    "id": 0,
     "title": "Samsung Galaxy s23 ultra",
     "description": "Ultimo celular samsung...",
     "category": "Tech",
@@ -10,6 +11,7 @@
     "stock": 50
   },
   {
+    "id": 1,
     "title": "Producto 1",
     "description": "Descripcion Producto 1",
     "category": "Tech",
@@ -20,6 +22,7 @@
     "stock": 10000
   },
   {
+    "id": 2,
     "title": "Producto 2",
     "description": "Descripcion Producto 2",
     "category": "Tech",
@@ -30,6 +33,7 @@
     "stock": 1
   },
   {
+    "id": 3,
     "title": "Producto 3",
     "description": "Descripcion Producto 3",
     "category": "Tech",
@@ -40,6 +44,7 @@
     "stock": 4235
   },
   {
+    "id": 4,
     "title": "Producto 4",
     "description": "Descripcion Producto 4",
     "category": "Tech",
@@ -50,6 +55,7 @@
     "stock": 3241
   },
   {
+    "id": 5,
     "title": "Producto 5",
     "description": "Descripcion Producto 5",
     "category": "Tech",
@@ -60,6 +66,7 @@
     "stock": 2366
   },
   {
+    "id": 6,
     "title": "Producto 6",
     "description": "Descripcion Producto 6",
     "category": "Tech",
@@ -70,6 +77,7 @@
     "stock": 2345
   },
   {
+    "id": 7,
     "title": "Producto 7",
     "description": "Descripcion Producto 7",
     "category": "Tech",
@@ -80,6 +88,7 @@
     "stock": 525
   },
   {
+    "id": 8,
     "title": "Producto 8",
     "description": "Descripcion Producto 8",
     "category": "Tech",
@@ -90,6 +99,7 @@
     "stock": 23
   },
   {
+    "id": 9,
     "title": "Producto 9",
     "description": "Descripcion Producto 9",
     "category": "Tech",
@@ -100,6 +110,7 @@
     "stock": 3978
   },
   {
+    "id": 10,
     "title": "Producto 10",
     "description": "Descripcion Producto 10 ACTUALIZADO",
     "category": "Tech",
@@ -110,6 +121,7 @@
     "stock": 1000
   },
   {
+    "id": 11,
     "title": "Producto 11",
     "description": "Descripcion Producto 11 ACTUALIZADO 2",
     "category": "Tech",
@@ -120,6 +132,7 @@
     "stock": 10000
   },
   {
+    "id": 12,
     "title": "Producto 12",
     "description": "Descripcion Producto 12",
     "category": "Tech",
@@ -129,6 +142,7 @@
     "status": true
   },
   {
+    "id": 13,
     "title": "Producto 13",
     "description": "Descripcion Producto 13",
     "category": "Tech",
@@ -138,6 +152,7 @@
     "status": true
   },
   {
+    "id": 14,
     "title": "Producto 14",
     "description": "Descripcion Producto 14",
     "category": "Tech",
@@ -147,6 +162,7 @@
     "status": true
   },
   {
+    "id": 15,
     "title": "Producto 15",
     "description": "Descripcion Producto 15",
     "category": "Tech",
@@ -156,6 +172,7 @@
     "status": true
   },
   {
+    "id": 16,
     "title": "Producto 16",
     "description": "Descripcion Producto 16",
     "category": "Tech",

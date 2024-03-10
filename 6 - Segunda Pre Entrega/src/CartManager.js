@@ -1,51 +1,24 @@
-const fs = require("fs");
+const mongoose = require("mongoose");
 const ProductManager = require("./ProductManager");
+const Cart = require("./models/carts");
 
 class CartManager {
-  constructor(filePath) {
-    this.path = filePath;
-    this.carts = this.readFileCarts();
-    this.cartIdCounter = this.calculateCartIdCounter();
-    this.productManager = new ProductManager("products.json");
+  constructor() {
+    this.productManager = new ProductManager();
   }
 
-  readFileCarts() {
+  async createCart(products) {
     try {
-      const data = fs.readFileSync(this.path, "utf8");
-      this.carts = JSON.parse(data) || [];
-      return this.carts;
-    } catch (error) {
-      console.log("Error reading file:", error.message);
-      return [];
-    }
-  }
-  calculateCartIdCounter() {
-    return Math.max(...this.carts.map((cart) => cart.id), 0) + 1;
-  }
-
-  saveCartsToFile() {
-    try {
-      const data = JSON.stringify(this.carts, null, 2);
-      fs.writeFileSync(this.path, data, "utf8");
-    } catch (error) {
-      console.error("Error saving file:", error, message);
-    }
-  }
-
-  async createCart(aProducts) {
-    try {
-      const aProductsQuantity = aProducts.map((productId) => ({
+      const productsWithQuantity = products.map((productId) => ({
         id: productId,
         quantity: 1,
       }));
 
-      const cart = {
-        id: this.cartIdCounter++,
-        products: aProductsQuantity || [],
-      };
+      const cart = new Cart({
+        products: productsWithQuantity,
+      });
 
-      this.carts.push(cart);
-      this.saveCartsToFile();
+      await cart.save();
       return cart;
     } catch (error) {
       console.error("Error creating cart:", error.message);
@@ -53,34 +26,33 @@ class CartManager {
     }
   }
 
-  getCartById(cartId) {
-    const cart = this.carts.find((c) => c.id === cartId);
-
-    if (cart) {
+  async getCartById(cartId) {
+    try {
+      const cart = await Cart.findById(cartId).lean();
       return cart;
-    } else {
-      console.error("Cart not found");
+    } catch (error) {
+      console.error("Error getting cart:", error.message);
       return null;
     }
   }
 
   async addProductToCart(cartId, productId) {
     try {
-      const cart = this.getCartById(cartId);
+      const cart = await Cart.findById(cartId);
 
       if (!cart) {
-        console.error("Carrito no encontrado");
+        console.error("Cart not found");
         return {
-          error: "Carrito no encontrado",
+          error: "Cart not found",
         };
       }
 
       const product = await this.productManager.getProductById(productId);
 
       if (!product) {
-        console.error("Producto no encontrado");
+        console.error("Product not found");
         return {
-          error: "Producto no encontrado",
+          error: "Product not found",
         };
       }
 
@@ -94,10 +66,41 @@ class CartManager {
         cart.products.push({ id: productId, quantity: 1 });
       }
 
-      this.saveCartsToFile();
+      await cart.save();
       return existingProduct || { id: productId, quantity: 1 };
     } catch (error) {
       console.error("Error adding product to cart:", error.message);
+      return null;
+    }
+  }
+
+  async updateProductQuantity(cartId, productId, quantity) {
+    try {
+      const cart = await Cart.findById(cartId);
+
+      if (!cart) {
+        console.error("Cart not found");
+        return {
+          error: "Cart not found",
+        };
+      }
+
+      const existingProduct = cart.products.find(
+        (product) => product.id.toString() === productId
+      );
+
+      if (existingProduct) {
+        existingProduct.quantity = quantity;
+        await cart.save();
+        return existingProduct;
+      } else {
+        console.error("Product not found in the cart");
+        return {
+          error: "Product not found in the cart",
+        };
+      }
+    } catch (error) {
+      console.error("Error updating product quantity:", error.message);
       return null;
     }
   }

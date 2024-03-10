@@ -1,58 +1,110 @@
 const { Router } = require("express");
-
 const CartManager = require("../CartManager");
-
-const cartManager = new CartManager("carts.json");
+const Cart = require("../models/carts");
+const Product = require("../models/products");
 
 const router = Router();
+const cartManager = new CartManager();
 
-router.get("/:cartId", (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const cartId = parseInt(req.params.cartId);
-    const cart = cartManager.getCartById(cartId);
+    const allCarts = await Cart.find().populate("products.id").lean();
+    res.json({ carts: allCarts });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get("/:cartId", async (req, res) => {
+  try {
+    const cartId = req.params.cartId;
+    const cart = await Cart.findById(cartId).populate("products.id").lean();
 
     if (cart) {
       res.json({ cart });
     } else {
-      res.status(404).json({ error: "Carrito no encontrado" });
+      res.status(404).json({ error: "Cart not found" });
     }
   } catch (error) {
-    res.status(500).json({ error: error });
+    res.status(500).json({ error: error.message });
   }
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    // const products = req.body;
-
-    const aProducts = req.body.products || [];
-    console.log(`Productos: ${aProducts}`);
-    const newCart = cartManager.createCart(aProducts);
+    const products = req.body.products || [];
+    const newCart = await cartManager.createCart(products);
 
     res.json({ cart: newCart });
   } catch (error) {
-    res.status(500).json({ error: error });
+    res.status(500).json({ error: error.message });
   }
 });
 
-router.post("/:cid/product/:pid", async (req, res) => {
+router.get("/:cid", async (req, res) => {
   try {
-    const cartId = parseInt(req.params.cid);
-    const productId = parseInt(req.params.pid);
+    const cartId = req.params.cid;
+    const cart = await cartManager.getCartById(cartId);
 
-    const cart = cartManager.getCartById(cartId);
-
-    if (!cart) {
-      return res.status(404).json({ error: "Carrito no encontrado" });
+    if (cart) {
+      res.render("cartDetails", { title: `Carrito ${cartId}`, cart });
+    } else {
+      res.status(404).json({ error: "Carrito no encontrado" });
     }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
-    const result = await cartManager.addProductToCart(cartId, productId);
+router.put("/:cid/products/:pid", async (req, res) => {
+  try {
+    const cartId = req.params.cid;
+    const productId = req.params.pid;
+    const quantity = req.body.quantity;
+
+    const result = await cartManager.updateProductQuantity(
+      cartId,
+      productId,
+      quantity
+    );
 
     if (result && result.error) {
       return res.status(400).json({ error: result.error });
     }
 
-    res.json({ cart });
+    res.json({ cart: result });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.delete("/:cid", async (req, res) => {
+  try {
+    const cartId = req.params.cid;
+    const result = await Cart.deleteOne({ _id: cartId });
+
+    if (result.deletedCount > 0) {
+      res.json({ status: "Cart deleted successfully" });
+    } else {
+      res.status(404).json({ error: "Cart not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.delete("/:cid/products/:pid", async (req, res) => {
+  try {
+    const cartId = req.params.cid;
+    const productId = req.params.pid;
+
+    const result = await cartManager.removeProductFromCart(cartId, productId);
+
+    if (result && result.error) {
+      return res.status(400).json({ error: result.error });
+    }
+
+    res.json({ cart: result });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -6,18 +6,6 @@ const productsRouter = require("./routes/products.router.js");
 const cartRouter = require("./routes/cart.router.js");
 const viewsRouter = require("./routes/views.router");
 
-// Monoose
-const mongoose = require("mongoose");
-
-mongoose
-  .connect(
-    "mongodb+srv://matiasviaggio-admin:Mv43864182@coderhousebackend.vocmiqt.mongodb.net/backend"
-  )
-  .then(() => {
-    console.log("Mongoose conectado");
-  });
-const ProductModel = require("./models/products");
-
 const PORT = 8080;
 const app = express();
 const server = http.createServer(app);
@@ -39,6 +27,19 @@ app.use(express.static(__dirname + "/public"));
 
 // Socket.io
 let newProduct = [];
+// io.on("connection", (socket) => {
+//   console.log("Nuevo cliente conectado");
+
+//   io.on("newProduct", (productData) => {
+//     newProduct.push(productData);
+//     io.emit("updateProducts", { productData });
+//   });
+
+// });
+
+// io.on("disconnect", () => {
+//   console.log("Cliente desconectado");
+// });
 
 io.on("connection", (socket) => {
   console.log("Nuevo cliente conectado");
@@ -59,15 +60,10 @@ app.use("/api/carts", cartRouter);
 
 app.use(
   "/",
-  async (req, res, next) => {
-    try {
-      const products = await ProductModel.find({}).lean();
-      res.locals.products = products;
-      next();
-    } catch (err) {
-      console.error("Error al obtener productos:", err);
-      next(err);
-    }
+  (req, res, next) => {
+    const products = require("../products.json");
+    res.locals.products = products;
+    next();
   },
   viewsRouter
 );

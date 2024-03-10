@@ -1,3 +1,4 @@
+// const socket = io();
 const socket = io.connect("http://localhost:8080");
 
 socket.on("disconnect", () => {
@@ -42,6 +43,26 @@ document
     }
   });
 
+// socket.on("updateProducts", ({ productData }) => {
+//   console.log("updateProducts");
+//   const cardsContainer = document.getElementById("card-container");
+//   productData.forEach((m) => {
+//     cardsContainer.append(`
+//     <div class="card col-3" style="width: 18rem; margin: 15px;">
+//           <div class="card-header">
+//             ${m.title}
+//           </div>
+//           <ul class="list-group list-group-flush">
+//             <li class="list-group-item">Descripción: ${m.description}</li>
+//             <li class="list-group-item">Categoría: ${m.category}</li>
+//             <li class="list-group-item">Precio: $${m.price}</li>
+//             <li class="list-group-item">Stock: ${m.stock}</li>
+//             <li class="list-group-item">Código: ${m.code}</li>
+//           </ul>
+//         </div>
+//     `);
+//   });
+// });
 socket.on("updateProducts", ({ productData }) => {
   console.log("updateProducts");
   if (productData && typeof productData === "object") {
