@@ -7,28 +7,10 @@ class CartManager {
     this.productManager = new ProductManager();
   }
 
-  // async createCart(products) {
-  //   try {
-  //     const productsWithQuantity = products.map((productId) => ({
-  //       id: productId,
-  //       quantity: 1,
-  //     }));
-
-  //     const cart = new Cart({
-  //       products: productsWithQuantity,
-  //     });
-
-  //     await cart.save();
-  //     return cart;
-  //   } catch (error) {
-  //     console.error("Error creating cart:", error.message);
-  //     return null;
-  //   }
-  // }
   async createCart(products) {
     try {
       const productsWithQuantity = products.map((productId) => ({
-        id: mongoose.Types.ObjectId(productId),
+        id: productId,
         quantity: 1,
       }));
 
@@ -119,40 +101,6 @@ class CartManager {
       }
     } catch (error) {
       console.error("Error updating product quantity:", error.message);
-      return null;
-    }
-  }
-
-  async removeProductFromCart(cartId, productId) {
-    try {
-      const cart = await Cart.findById(cartId);
-
-      if (!cart) {
-        console.error("Carrito no encontrado.");
-        return {
-          error: "Carrito no encontrado.",
-        };
-      }
-
-      const indexToRemove = cart.products.findIndex(
-        (product) => product.id.toString() === productId
-      );
-
-      if (indexToRemove !== -1) {
-        cart.products.splice(indexToRemove, 1);
-        await cart.save();
-        return { message: "Producto eliminado del carrito." };
-      } else {
-        console.error("Producto no encontrado.");
-        return {
-          error: "Producto no encontrado en el carrito.",
-        };
-      }
-    } catch (error) {
-      console.error(
-        "Error al eliminar el producto del carrito:",
-        error.message
-      );
       return null;
     }
   }

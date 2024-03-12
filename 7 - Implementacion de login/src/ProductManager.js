@@ -1,5 +1,3 @@
-const Product = require("./models/products");
-
 class ProductManager {
   constructor() {}
 
@@ -29,7 +27,7 @@ class ProductManager {
   async getProductById(productId) {
     console.log(`El id del producto es ${productId}`);
     try {
-      const product = await Product.findOne({ _id: productId }).lean();
+      const product = await Product.findOne({ id: productId }).lean();
 
       if (product) {
         return product;

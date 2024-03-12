@@ -1,20 +1,18 @@
-<h1 style="text-align: center;">Detalles del Carrito</h1>
-<ul>
-  <div class="container-fluid">
-    <div
-      class="row"
-      style="display: flex;justify-content: center;align-items: center;"
-    >
-      {{#each cart.products}}
-        <div class="card col-3" style="width: 18rem; margin: 15px;">
-          <div class="card-header">
-            {{id.title}}
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cantidad: {{quantity}}</li>
-          </ul>
-        </div>
-      {{/each}}
-    </div>
+<h1>{{title}}</h1>
+
+{{#if cart}}
+  <h2>Productos en el Carrito</h2>
+  <div class="product-cards">
+    {{#each cart.products}}
+      <div class="product-card">
+        <img src="{{this.thumbnail}}" alt="{{this.title}}" />
+        <h3>{{this.title}}</h3>
+        <p>{{this.description}}</p>
+        <p>Cantidad: {{this.quantity}}</p>
+        <p>Precio unitario: ${{this.price}}</p>
+      </div>
+    {{/each}}
   </div>
-</ul>
+{{else}}
+  <p>No se encontraron productos en el carrito.</p>
+{{/if}}

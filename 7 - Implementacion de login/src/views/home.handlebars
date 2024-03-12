@@ -1,4 +1,5 @@
-<h1 style="text-align: center;">Productos</h1>
+<h1 style="text-align: center;">Bienvenido a la Home Page, estos son nuestros
+  productos:</h1>
 <ul>
   <div class="container-fluid">
     <div
@@ -16,25 +17,11 @@
             <li class="list-group-item">Price: ${{price}}</li>
             <li class="list-group-item">Stock: {{stock}}</li>
             <li class="list-group-item">Code: {{code}}</li>
-            <li class="list-group-item">
-              <a href="/products/{{_id}}">Detalles</a>
-              <form method="post" action="/products/{{_id}}/add-to-cart">
-                <button type="submit">Agregar al carrito</button>
-              </form>
-            </li>
           </ul>
         </div>
       {{/each}}
     </div>
   </div>
 </ul>
-
-<div style="text-align: center; margin-top: 20px;">
-  {{#if hasPrevPage}}
-    <a href="{{prevLink}}">Anterior</a>
-  {{/if}}
-
-  {{#if hasNextPage}}
-    <a href="{{nextLink}}">Siguiente</a>
-  {{/if}}
-</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/home.js"></script>

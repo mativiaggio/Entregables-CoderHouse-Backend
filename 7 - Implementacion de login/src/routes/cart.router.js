@@ -8,7 +8,7 @@ const cartManager = new CartManager();
 
 router.get("/", async (req, res) => {
   try {
-    const allCarts = await Cart.find().populate("products.id");
+    const allCarts = await Cart.find().populate("products.id").lean();
     res.json({ carts: allCarts });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -56,40 +56,6 @@ router.get("/:cid", async (req, res) => {
   }
 });
 
-router.put("/:cid/", async (req, res) => {
-  try {
-    const cartId = req.params.cid;
-    const products = req.body.products || [];
-
-    if (!Array.isArray(products) || products.length === 0) {
-      return res.status(400).json({ error: "Invalid or empty products array" });
-    }
-
-    const updatedCart = await Promise.all(
-      products.map(async (product) => {
-        const productId = product.id;
-        const quantity = product.quantity || 1;
-
-        const result = await cartManager.addProductToCart(
-          cartId,
-          productId,
-          quantity
-        );
-
-        if (result && result.error) {
-          return { error: result.error };
-        }
-
-        return result;
-      })
-    );
-
-    res.json({ cart: updatedCart });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
 router.put("/:cid/products/:pid", async (req, res) => {
   try {
     const cartId = req.params.cid;
@@ -127,23 +93,6 @@ router.delete("/:cid", async (req, res) => {
   }
 });
 
-// router.delete("/:cid/products/:pid", async (req, res) => {
-//   try {
-//     const cartId = req.params.cid;
-//     const productId = req.params.pid;
-
-//     const result = await cartManager.removeProductFromCart(cartId, productId);
-
-//     if (result && result.error) {
-//       return res.status(400).json({ error: result.error });
-//     }
-
-//     res.json({ cart: result });
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
-
 router.delete("/:cid/products/:pid", async (req, res) => {
   try {
     const cartId = req.params.cid;
@@ -155,7 +104,7 @@ router.delete("/:cid/products/:pid", async (req, res) => {
       return res.status(400).json({ error: result.error });
     }
 
-    res.json({ message: "Producto eliminado del carrito con éxito." });
+    res.json({ cart: result });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
