@@ -1,0 +1,167 @@
+[
+  {
+    "title": "Samsung Galaxy s23 ultra",
+    "description": "Ultimo celular samsung...",
+    "category": "Tech",
+    "status": true,
+    "price": 1450000,
+    "thumbnails": ["path/s23ultra.jpg"],
+    "code": "SMGS230",
+    "stock": 50
+  },
+  {
+    "title": "Producto 1",
+    "description": "Descripcion Producto 1",
+    "category": "Tech",
+    "status": true,
+    "price": 1545000,
+    "thumbnails": ["path/Producto2.jpg"],
+    "code": "PROD1",
+    "stock": 10000
+  },
+  {
+    "title": "Producto 2",
+    "description": "Descripcion Producto 2",
+    "category": "Tech",
+    "status": true,
+    "price": 1545000,
+    "thumbnails": ["path/Producto3.jpg"],
+    "code": "PROD2",
+    "stock": 1
+  },
+  {
+    "title": "Producto 3",
+    "description": "Descripcion Producto 3",
+    "category": "Tech",
+    "status": true,
+    "price": 1645000,
+    "thumbnails": ["path/Producto4.jpg"],
+    "code": "PROD3",
+    "stock": 4235
+  },
+  {
+    "title": "Producto 4",
+    "description": "Descripcion Producto 4",
+    "category": "Tech",
+    "status": true,
+    "price": 17445000,
+    "thumbnails": ["path/Producto5.jpg"],
+    "code": "PROD4",
+    "stock": 3241
+  },
+  {
+    "title": "Producto 5",
+    "description": "Descripcion Producto 5",
+    "category": "Tech",
+    "status": true,
+    "price": 1545000,
+    "thumbnails": ["path/Producto6.jpg"],
+    "code": "PROD5",
+    "stock": 2366
+  },
+  {
+    "title": "Producto 6",
+    "description": "Descripcion Producto 6",
+    "category": "Tech",
+    "status": true,
+    "price": 1545000,
+    "thumbnails": ["path/Producto7.jpg"],
+    "code": "PROD6",
+    "stock": 2345
+  },
+  {
+    "title": "Producto 7",
+    "description": "Descripcion Producto 7",
+    "category": "Tech",
+    "status": true,
+    "price": 1545000,
+    "thumbnails": ["path/Producto8.jpg"],
+    "code": "PROD7",
+    "stock": 525
+  },
+  {
+    "title": "Producto 8",
+    "description": "Descripcion Producto 8",
+    "category": "Tech",
+    "status": true,
+    "price": 1545000,
+    "thumbnails": ["path/Producto9.jpg"],
+    "code": "PROD8",
+    "stock": 23
+  },
+  {
+    "title": "Producto 9",
+    "description": "Descripcion Producto 9",
+    "category": "Tech",
+    "status": true,
+    "price": 1545000,
+    "thumbnails": ["path/Producto10"],
+    "code": "PROD9",
+    "stock": 3978
+  },
+  {
+    "title": "Producto 10",
+    "description": "Descripcion Producto 10 ACTUALIZADO",
+    "category": "Tech",
+    "status": true,
+    "price": 873222,
+    "thumbnails": ["path/Producto11"],
+    "code": "PROD10",
+    "stock": 1000
+  },
+  {
+    "title": "Producto 11",
+    "description": "Descripcion Producto 11 ACTUALIZADO 2",
+    "category": "Tech",
+    "status": true,
+    "price": 1545000,
+    "thumbnails": ["path/Producto11.jpg"],
+    "code": "PROD11",
+    "stock": 10000
+  },
+  {
+    "title": "Producto 12",
+    "description": "Descripcion Producto 12",
+    "category": "Tech",
+    "price": "354432",
+    "stock": "200",
+    "code": "PROD12",
+    "status": true
+  },
+  {
+    "title": "Producto 13",
+    "description": "Descripcion Producto 13",
+    "category": "Tech",
+    "price": "35442",
+    "stock": "2003",
+    "code": "PROD13",
+    "status": true
+  },
+  {
+    "title": "Producto 14",
+    "description": "Descripcion Producto 14",
+    "category": "Tech",
+    "price": "35442",
+    "stock": "2003",
+    "code": "PROD14",
+    "status": true
+  },
+  {
+    "title": "Producto 15",
+    "description": "Descripcion Producto 15",
+    "category": "Tech",
+    "price": "34234523",
+    "stock": "210",
+    "code": "PROD15",
+    "status": true
+  },
+  {
+    "title": "Producto 16",
+    "description": "Descripcion Producto 16",
+    "category": "Tech",
+    "price": "1200",
+    "stock": "100",
+    "code": "PROD16",
+    "status": true
+  }
+]
