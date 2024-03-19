@@ -51,7 +51,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/", privateAccess, (req, res) => {
-  res.render("realtimeproducts", { user: req.session.user });
+  res.render("home", { user: req.session.user });
 });
 
 router.get("/realtimeproducts", privateAccess, (req, res) => {
@@ -60,7 +60,7 @@ router.get("/realtimeproducts", privateAccess, (req, res) => {
 
 router.get("/products", privateAccess, async (req, res) => {
   try {
-    const { limit = 10, page = 1 } = req.query;
+    const { limit = 12, page = 1 } = req.query;
     const skip = (page - 1) * limit;
 
     const apiResponse = await axios.get(
@@ -68,6 +68,16 @@ router.get("/products", privateAccess, async (req, res) => {
     );
 
     const totalPages = apiResponse.data.totalPages;
+
+    apiResponse.data.payload.forEach((product) => {
+      const randomDiscountPercentage = Math.random() * (0.3 - 0.05) + 0.05;
+      const discountedPrice = (
+        product.price *
+        (1 - randomDiscountPercentage)
+      ).toFixed(2);
+      product.discountedPrice = discountedPrice;
+      product.discountPercentage = (randomDiscountPercentage * 100).toFixed(0);
+    });
 
     res.render("products", {
       title: "Productos",

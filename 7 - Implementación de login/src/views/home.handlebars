@@ -1,27 +1,45 @@
-<h1 style="text-align: center;">Bienvenido a la Home Page, estos son nuestros
-  productos:</h1>
-<ul>
-  <div class="container-fluid">
+<header class="container-fluid home-header">
+
+</header>
+
+<section class="container home-levis-allways">
+
+</section>
+
+<section class="container home-cards-to-products">
+  <div class="home-card-container">
     <div
-      class="row"
-      style="display: flex;justify-content: center;align-items: center;"
+      class="home-card-img-container"
+      style="background-image: url(./assets/imgs/boy-from-back.jpg);"
     >
-      {{#each products}}
-        <div class="card col-3" style="width: 18rem; margin: 15px;">
-          <div class="card-header">
-            {{title}}
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Description: {{description}}</li>
-            <li class="list-group-item">Category: {{category}}</li>
-            <li class="list-group-item">Price: ${{price}}</li>
-            <li class="list-group-item">Stock: {{stock}}</li>
-            <li class="list-group-item">Code: {{code}}</li>
-          </ul>
-        </div>
-      {{/each}}
+
+      <div class="home-card-button">
+        <a href="/products">MORE</a>
+      </div>
     </div>
   </div>
-</ul>
+  <div class="home-card-container">
+    <div
+      class="home-card-img-container"
+      style="background-image: url(./assets/imgs/jeans-from-back.jpg);"
+    >
+
+      <div class="home-card-button">
+        <a href="/products">MORE</a>
+      </div>
+    </div>
+  </div>
+  <div class="home-card-container">
+    <div
+      class="home-card-img-container"
+      style="background-image: url(./assets/imgs/girl-from-back.jpg);"
+    >
+
+      <div class="home-card-button">
+        <a href="/products">MORE</a>
+      </div>
+    </div>
+  </div>
+</section>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/home.js"></script>

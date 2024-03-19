@@ -3,9 +3,11 @@ const registerForm = document.getElementById("registerForm");
 registerForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const data = new FormData(registerForm);
+
   const obj = {};
   console.log("Toma el register");
   data.forEach((value, key) => (obj[key] = value));
+
   fetch("/api/sessions/register", {
     method: "POST",
     body: JSON.stringify(obj),
@@ -13,8 +15,10 @@ registerForm.addEventListener("submit", (e) => {
       "Content-Type": "application/json",
     },
   })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("Data", data);
-    });
+    .then((res) => {
+      if (res.status == 200) {
+        window.location.replace("/login");
+      }
+    })
+    .catch((error) => console.error("Error:", error));
 });
