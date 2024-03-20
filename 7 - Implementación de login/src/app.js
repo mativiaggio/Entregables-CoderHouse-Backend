@@ -82,7 +82,7 @@ const handlebars = require("express-handlebars");
 const http = require("http");
 const viewsRouter = require("./routes/views.router");
 const sessionRouter = require("./routes/sessions.router");
-
+require("dotenv").config();
 // Mongoose
 const mongoose = require("mongoose");
 
@@ -103,7 +103,7 @@ const io = new Server(server, {
 // Conexión a la base de datos MongoDB
 mongoose
   .connect(
-    "mongodb+srv://matiasviaggio-admin:hDyTCsrU5IQo4vkR@coderhousebackend.vocmiqt.mongodb.net/backend"
+    `mongodb+srv://matiasviaggio-admin:${process.env.MONGO_PASSWORD}@coderhousebackend.vocmiqt.mongodb.net/backend`
   )
   .then(() => {
     console.log("Mongoose conectado");

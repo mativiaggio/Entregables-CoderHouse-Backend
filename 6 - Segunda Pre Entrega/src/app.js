@@ -5,13 +5,13 @@ const http = require("http");
 const productsRouter = require("./routes/products.router.js");
 const cartRouter = require("./routes/cart.router.js");
 const viewsRouter = require("./routes/views.router");
-
+require("dotenv").config();
 // Monoose
 const mongoose = require("mongoose");
 
 mongoose
   .connect(
-    "mongodb+srv://matiasviaggio-admin:hDyTCsrU5IQo4vkR@coderhousebackend.vocmiqt.mongodb.net/backend"
+    `mongodb+srv://matiasviaggio-admin:${process.env.MONGO_PASSWORD}@coderhousebackend.vocmiqt.mongodb.net/backend`
   )
   .then(() => {
     console.log("Mongoose conectado");
