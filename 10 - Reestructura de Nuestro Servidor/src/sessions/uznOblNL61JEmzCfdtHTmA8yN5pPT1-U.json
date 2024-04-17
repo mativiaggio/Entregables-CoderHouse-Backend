@@ -1,0 +1,12 @@
+{
+  "cookie": {
+    "originalMaxAge": null,
+    "expires": null,
+    "httpOnly": true,
+    "path": "/"
+  },
+  "__lastAccess": 1710285315988,
+  "username": "johndoe",
+  "admin": true,
+  "visitCounter": 1
+}
