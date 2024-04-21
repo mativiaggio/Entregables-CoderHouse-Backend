@@ -6,8 +6,8 @@ const viewsRouter = require("./routes/views.router");
 const sessionRouter = require("./routes/sessions.router");
 const passport = require("passport");
 const initializePassport = require("./config/passport.config");
-require("dotenv").config();
 const env_config = require("./config/config");
+// require("dotenv").config();
 
 // Mongoose
 const mongoose = require("mongoose");

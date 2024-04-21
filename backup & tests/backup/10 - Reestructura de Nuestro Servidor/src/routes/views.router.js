@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const Product = require("../models/products");
-const CartManager = require("../CartManager");
-const ProductManager = require("../ProductManager");
+const CartManager = require("../controllers/CartManager");
+const ProductManager = require("../controllers/ProductManager");
 const ProductModel = require("../models/products");
 
 // API
@@ -61,7 +61,7 @@ router.get("/realtimeproducts", privateAccess, (req, res) => {
 router.get("/products", privateAccess, async (req, res) => {
   try {
     const { limit = 12, page = 1 } = req.query;
-    // const skip = (page - 1) * limit;
+    const skip = (page - 1) * limit;
 
     const apiResponse = await axios.get(
       `http://localhost:8080/api/products?limit=${limit}&page=${page}`

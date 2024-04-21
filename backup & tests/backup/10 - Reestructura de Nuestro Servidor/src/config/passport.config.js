@@ -3,7 +3,6 @@ const local = require("passport-local");
 const { createHash, isValidPasword } = require("../utils");
 const userModel = require("../models/users");
 const GithubStrategy = require("passport-github2");
-require("dotenv").config();
 const env_config = require("../config/config");
 
 const LocalStrategy = local.Strategy;

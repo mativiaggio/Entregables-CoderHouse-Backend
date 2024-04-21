@@ -1,22 +1,10 @@
 const { Router } = require("express");
-const Product = require("../models/products");
-const CartManager = require("../controllers/CartManager");
-const ProductManager = require("../controllers/ProductManager");
-const ProductModel = require("../models/products");
-
-// API
-const productsRouter = require("../routes/products.router.js");
-const cartRouter = require("../routes/cart.router.js");
-
-const axios = require("axios");
+const CartController = require("../controllers/carts.controller");
+const ProductController = require("../controllers/products.controller");
 
 const router = Router();
-const cartManager = new CartManager();
-
-const productManager = new ProductManager();
-
-router.use("/api/products", productsRouter);
-router.use("/api/carts", cartRouter);
+const cartController = new CartController();
+const productController = new ProductController();
 
 const publicAccess = (req, res, next) => {
   if (req.session.user) return res.redirect("/");
@@ -45,7 +33,6 @@ router.get("/logout", (req, res) => {
       console.error("Error destroying session:", err);
       return res.status(500).send("Error destroying session");
     }
-
     res.redirect("/login");
   });
 });
@@ -63,13 +50,12 @@ router.get("/products", privateAccess, async (req, res) => {
     const { limit = 12, page = 1 } = req.query;
     const skip = (page - 1) * limit;
 
-    const apiResponse = await axios.get(
-      `http://localhost:8080/api/products?limit=${limit}&page=${page}`
-    );
+    const products = await productController.getProducts(req, res);
 
-    const totalPages = apiResponse.data.totalPages;
+    console.log("products " + products);
+    const totalPages = products.totalPages;
 
-    apiResponse.data.payload.forEach((product) => {
+    products.payload.forEach((product) => {
       const randomDiscountPercentage = Math.random() * (0.3 - 0.05) + 0.05;
       const discountedPrice = (
         product.price *
@@ -81,7 +67,7 @@ router.get("/products", privateAccess, async (req, res) => {
 
     res.render("products", {
       title: "Productos",
-      products: apiResponse.data.payload,
+      products: products.payload,
       totalPages,
       page: parseInt(page),
       hasPrevPage: page > 1,
@@ -104,12 +90,7 @@ router.get("/products", privateAccess, async (req, res) => {
 router.get("/products/:pid", privateAccess, async (req, res) => {
   try {
     const productId = req.params.pid;
-
-    const apiResponse = await axios.get(
-      `http://localhost:8080/api/products/${productId}`
-    );
-
-    const product = apiResponse.data;
+    const product = await productController.getProductById(productId);
 
     if (product) {
       res.render("productDetails", { title: product.title, product });
@@ -126,9 +107,7 @@ router.post("/products/:pid/add-to-cart", privateAccess, async (req, res) => {
     const productId = req.params.pid;
     const cartId = req.body.cartId;
     console.log(`Id del carrito: "${cartId}"`);
-    const result = await cartManager.addProductToCart(cartId, productId);
-
-    // if  (cartId)
+    const result = await cartController.addProductToCart(cartId, productId);
 
     if (result && result.error) {
       return res.status(400).json({ error: result.error });
@@ -143,13 +122,13 @@ router.post("/products/:pid/add-to-cart", privateAccess, async (req, res) => {
 router.get("/carts/:cid", privateAccess, async (req, res) => {
   try {
     const cartId = req.params.cid;
-    const cart = await cartManager.getCartById(cartId);
+    const cart = await cartController.getCartById(cartId);
 
     if (cart) {
       const products = [];
       for (const item of cart.products) {
         console.log("El id del producto es " + item.id);
-        const product = await productManager.getProductById(item.id);
+        const product = await productController.getProductById(item.id);
         if (product) {
           products.push({
             ...product,
