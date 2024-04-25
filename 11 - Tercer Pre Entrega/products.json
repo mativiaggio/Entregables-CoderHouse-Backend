@@ -1,0 +1,262 @@
+[
+  {
+    "title": "Levi's 501 Original Fit Jeans",
+    "description": "The timeless classic. Levi's 501 Original Fit Jeans are the epitome of American style and craftsmanship.",
+    "category": "Jeans",
+    "status": true,
+    "price": 59.99,
+    "thumbnails": [
+      "./assets/products/levis_501_front.jpg",
+      "./assets/products/levis_501_back.jpg"
+    ],
+    "code": "LV501",
+    "stock": 100
+  },
+  {
+    "title": "Levi's Trucker Jacket",
+    "description": "A versatile and iconic denim jacket that pairs perfectly with anything. Levi's Trucker Jacket is a must-have in every wardrobe.",
+    "category": "Jackets",
+    "status": true,
+    "price": 79.99,
+    "thumbnails": [
+      "./assets/products/levis_trucker_blue.jpg",
+      "./assets/products/levis_trucker_black.jpg"
+    ],
+    "code": "LVTRK",
+    "stock": 80
+  },
+  {
+    "title": "Levi's 511 Slim Fit Stretch Jeans",
+    "description": "Modern slim fit jeans with stretch for comfort. Levi's 511 Slim Fit Stretch Jeans are perfect for everyday wear.",
+    "category": "Jeans",
+    "status": true,
+    "price": 69.99,
+    "thumbnails": [
+      "./assets/products/levis_511_blue.jpg",
+      "./assets/products/levis_511_black.jpg"
+    ],
+    "code": "LV511",
+    "stock": 120
+  },
+  {
+    "title": "Levi's Logo T-Shirt",
+    "description": "Show off your Levi's pride with this classic logo tee. Made with soft cotton for all-day comfort.",
+    "category": "T-Shirts",
+    "status": true,
+    "price": 24.99,
+    "thumbnails": [
+      "./assets/products/levis_logo_black.jpg",
+      "./assets/products/levis_logo_white.jpg"
+    ],
+    "code": "LVTSHIRT",
+    "stock": 150
+  },
+  {
+    "title": "Levi's Sherpa Trucker Jacket",
+    "description": "Stay warm and stylish with Levi's Sherpa Trucker Jacket. Features cozy sherpa lining and classic denim exterior.",
+    "category": "Jackets",
+    "status": true,
+    "price": 89.99,
+    "thumbnails": [
+      "./assets/products/levis_sherpa_blue.jpg",
+      "./assets/products/levis_sherpa_black.jpg"
+    ],
+    "code": "LVSHERPA",
+    "stock": 70
+  },
+  {
+    "title": "Levi's 512 Slim Taper Fit Jeans",
+    "description": "Slim taper fit jeans that offer a modern look with room to move. Levi's 512 Slim Taper Fit Jeans are perfect for those who want style and comfort.",
+    "category": "Jeans",
+    "status": true,
+    "price": 74.99,
+    "thumbnails": [
+      "./assets/products/levis_512_blue.jpg",
+      "./assets/products/levis_512_black.jpg"
+    ],
+    "code": "LV512",
+    "stock": 110
+  },
+  {
+    "title": "Levi's Graphic Hoodie",
+    "description": "Stay cozy in style with Levi's Graphic Hoodie. Features a bold Levi's logo on the front and soft fleece interior.",
+    "category": "Hoodies",
+    "status": true,
+    "price": 49.99,
+    "thumbnails": [
+      "./assets/products/levis_hoodie_blue.jpg",
+      "./assets/products/levis_hoodie_black.jpg"
+    ],
+    "code": "LVHOODIE",
+    "stock": 90
+  },
+  {
+    "title": "Levi's 501 Crop Jeans",
+    "description": "A modern twist on a classic favorite. Levi's 501 Crop Jeans feature a cropped length for a fresh look.",
+    "category": "Jeans",
+    "status": true,
+    "price": 64.99,
+    "thumbnails": [
+      "./assets/products/levis_501_crop_blue.jpg",
+      "./assets/products/levis_501_crop_black.jpg"
+    ],
+    "code": "LV501C",
+    "stock": 95
+  },
+  {
+    "title": "Levi's Batwing T-Shirt",
+    "description": "Classic Levi's style with the iconic batwing logo. Levi's Batwing T-Shirt is a timeless addition to any wardrobe.",
+    "category": "T-Shirts",
+    "status": true,
+    "price": 29.99,
+    "thumbnails": [
+      "./assets/products/levis_batwing_black.jpg",
+      "./assets/products/levis_batwing_white.jpg"
+    ],
+    "code": "LVBTSHIRT",
+    "stock": 130
+  },
+  {
+    "title": "Levi's Corduroy Trucker Jacket",
+    "description": "Elevate your look with Levi's Corduroy Trucker Jacket. Features soft corduroy fabric for a stylish and comfortable fit.",
+    "category": "Jackets",
+    "status": true,
+    "price": 84.99,
+    "thumbnails": [
+      "./assets/products/levis_corduroy_brown.jpg",
+      "./assets/products/levis_corduroy_black.jpg"
+    ],
+    "code": "LVCORD",
+    "stock": 75
+  },
+  {
+    "title": "Levi's Logo Sweatshirt",
+    "description": "Cozy up in style with Levi's Logo Sweatshirt. Features a classic Levi's logo and soft fleece interior.",
+    "category": "Sweatshirts",
+    "status": true,
+    "price": 44.99,
+    "thumbnails": [
+      "./assets/products/levis_sweatshirt_blue.jpg",
+      "./assets/products/levis_sweatshirt_black.jpg"
+    ],
+    "code": "LVSWT",
+    "stock": 85
+  },
+  {
+    "title": "Levi's 505 Regular Fit Jeans",
+    "description": "Classic regular fit jeans that never go out of style. Levi's 505 Regular Fit Jeans are a wardrobe staple.",
+    "category": "Jeans",
+    "status": true,
+    "price": 54.99,
+    "thumbnails": [
+      "./assets/products/levis_505_blue.jpg",
+      "./assets/products/levis_505_black.jpg"
+    ],
+    "code": "LV505",
+    "stock": 105
+  },
+  {
+    "title": "Levi's Vintage Logo T-Shirt",
+    "description": "Vintage-inspired Levi's logo tee for a timeless look. Made with soft cotton for all-day comfort.",
+    "category": "T-Shirts",
+    "status": true,
+    "price": 34.99,
+    "thumbnails": [
+      "./assets/products/levis_vintage_black.jpg",
+      "./assets/products/levis_vintage_white.jpg"
+    ],
+    "code": "LVVTSHIRT",
+    "stock": 140
+  },
+  {
+    "title": "Levi's Classic Denim Jacket",
+    "description": "The classic denim jacket that never goes out of style. Levi's Classic Denim Jacket is a wardrobe essential.",
+    "category": "Jackets",
+    "status": true,
+    "price": 74.99,
+    "thumbnails": [
+      "./assets/products/levis_classic_blue.jpg",
+      "./assets/products/levis_classic_black.jpg"
+    ],
+    "code": "LVDENIM",
+    "stock": 95
+  },
+  {
+    "title": "Levi's Graphic Crewneck Sweatshirt",
+    "description": "Stay cozy and stylish with Levi's Graphic Crewneck Sweatshirt. Features a bold Levi's graphic and soft fleece interior.",
+    "category": "Sweatshirts",
+    "status": true,
+    "price": 49.99,
+    "thumbnails": [
+      "./assets/products/levis_crewneck_blue.jpg",
+      "./assets/products/levis_crewneck_black.jpg"
+    ],
+    "code": "LVCREW",
+    "stock": 80
+  },
+  {
+    "title": "Levi's Logo Hoodie",
+    "description": "Sporty and stylish, Levi's Logo Hoodie is perfect for casual days. Features a bold Levi's logo and soft fleece interior.",
+    "category": "Hoodies",
+    "status": true,
+    "price": 54.99,
+    "thumbnails": [
+      "./assets/products/levis_hoodie_blue.jpg",
+      "./assets/products/levis_hoodie_black.jpg"
+    ],
+    "code": "LVLOGOH",
+    "stock": 85
+  },
+  {
+    "title": "Levi's Ribcage Straight Ankle Jeans",
+    "description": "High-rise jeans with a straight leg for a flattering fit. Levi's Ribcage Straight Ankle Jeans are a versatile addition to your wardrobe.",
+    "category": "Jeans",
+    "status": true,
+    "price": 79.99,
+    "thumbnails": [
+      "./assets/products/levis_ribcage_blue.jpg",
+      "./assets/products/levis_ribcage_black.jpg"
+    ],
+    "code": "LVRIBCAGE",
+    "stock": 90
+  },
+  {
+    "title": "Levi's Oversized Logo T-Shirt",
+    "description": "Make a statement with Levi's Oversized Logo T-Shirt. Features an oversized Levi's logo for a bold look.",
+    "category": "T-Shirts",
+    "status": true,
+    "price": 39.99,
+    "thumbnails": [
+      "./assets/products/levis_oversized_black.jpg",
+      "./assets/products/levis_oversized_white.jpg"
+    ],
+    "code": "LVOVERSIZE",
+    "stock": 120
+  },
+  {
+    "title": "Levi's Sherpa Lined Hoodie",
+    "description": "Stay warm and cozy with Levi's Sherpa Lined Hoodie. Features plush sherpa lining for extra warmth.",
+    "category": "Hoodies",
+    "status": true,
+    "price": 64.99,
+    "thumbnails": [
+      "./assets/products/levis_sherpa_hoodie_blue.jpg",
+      "./assets/products/levis_sherpa_hoodie_black.jpg"
+    ],
+    "code": "LVSHERPAH",
+    "stock": 70
+  },
+  {
+    "title": "Levi's Logo Embroidered Sweatshirt",
+    "description": "Classic Levi's sweatshirt with embroidered logo detailing. Made with soft fleece for maximum comfort.",
+    "category": "Sweatshirts",
+    "status": true,
+    "price": 49.99,
+    "thumbnails": [
+      "./assets/products/levis_embroidered_blue.jpg",
+      "./assets/products/levis_embroidered_black.jpg"
+    ],
+    "code": "LVEMBROID",
+    "stock": 100
+  }
+]
