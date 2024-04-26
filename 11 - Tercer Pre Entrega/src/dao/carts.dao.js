@@ -30,6 +30,16 @@ class CartDAO {
     }
   }
 
+  async getCartByUserId(userId) {
+    try {
+      const cart = await Cart.findOne({ user: userId });
+      return cart;
+    } catch (error) {
+      console.error("Error getting cart by user ID:", error.message);
+      throw error;
+    }
+  }
+
   async addProductToCart(cartId, productId) {
     try {
       const cart = await Cart.findById(cartId);

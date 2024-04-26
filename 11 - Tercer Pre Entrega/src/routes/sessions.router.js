@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const userModel = require("../models/users");
+const cartModel = require("../models/carts");
 const bcrypt = require("bcrypt");
 const { createHash, isValidPasword } = require("../utils");
 const passport = require("passport");
@@ -13,9 +14,18 @@ sessionRouter.post(
   }),
   async (req, res, next) => {
     try {
+      const newCart = await cartModel.create({
+        user: req.user._id,
+        products: [],
+      });
+
+      const cartId = newCart._id;
+
       const userEmail = req.user.email;
       const userFirstName = req.user.first_name;
       const userLastName = req.user.last_name;
+
+      await userModel.findByIdAndUpdate(req.user._id, { cartId });
 
       res.redirect(
         `/api/mail/successfully-registered?destination=${userEmail}&firstname=${userFirstName}&lastname=${userLastName}`
@@ -38,16 +48,12 @@ sessionRouter.post(
   async (req, res) => {
     const user = req.user;
     req.session.user = {
+      _id: user._id,
       name: `${user.first_name} ${user.last_name}`,
       email: user.email,
       age: user.age,
+      cart: user.cart,
     };
-
-    // res.send({
-    //   status: "success",
-    //   payload: req.session.user,
-    //   message: "Successfully logged in",
-    // });
 
     const userEmail = req.user.email;
     const userFirstName = req.user.first_name;

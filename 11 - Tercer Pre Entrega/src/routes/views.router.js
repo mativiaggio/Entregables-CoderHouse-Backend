@@ -47,6 +47,8 @@ router.get("/realtimeproducts", privateAccess, (req, res) => {
 
 router.get("/products", privateAccess, async (req, res) => {
   try {
+    const userCartId = req.session.user.cart;
+
     const { limit = 12, page = 1 } = req.query;
     const skip = (page - 1) * limit;
 
@@ -78,6 +80,7 @@ router.get("/products", privateAccess, async (req, res) => {
           ? `/products?limit=${limit}&page=${parseInt(page) + 1}`
           : null,
       user: req.session.user,
+      userCartId: userCartId,
     });
   } catch (error) {
     console.error("Error in /products route:", error);
@@ -103,11 +106,13 @@ router.get("/products/:pid", privateAccess, async (req, res) => {
 });
 
 router.post("/products/:pid/add-to-cart", privateAccess, async (req, res) => {
+  console.log("entramos en el router");
   try {
     const productId = req.params.pid;
-    const cartId = req.body.cartId;
-    console.log(`Id del carrito: "${cartId}"`);
-    const result = await cartController.addProductToCart(cartId, productId);
+    const userId = req.session.user._id;
+    console.log("el user id es " + userId);
+    console.log(req.session.user);
+    const result = await cartController.addProductToCart(userId, productId);
 
     if (result && result.error) {
       return res.status(400).json({ error: result.error });
