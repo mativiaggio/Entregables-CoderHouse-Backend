@@ -51,18 +51,19 @@ class ProductController {
     }
   }
 
-  async getProductById(req, res) {
+  async getProductById(paramproductId) {
     try {
-      const productId = req.params.pid;
+      const productId = paramproductId;
       const product = await productDAO.getProductById(productId);
 
       if (product) {
-        res.json(product);
+        // res.json(product);
+        return product;
       } else {
-        res.status(404).json({ error: "Producto no encontrado" });
+        return;
       }
     } catch (error) {
-      res.status(500).json({ error: "Error al obtener el producto" });
+      return;
     }
   }
 

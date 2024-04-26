@@ -53,8 +53,6 @@ router.get("/products", privateAccess, async (req, res) => {
     const skip = (page - 1) * limit;
 
     const products = await productController.getProducts(req, res);
-
-    console.log("products " + products);
     const totalPages = products.totalPages;
 
     products.payload.forEach((product) => {
@@ -110,8 +108,6 @@ router.post("/products/:pid/add-to-cart", privateAccess, async (req, res) => {
   try {
     const productId = req.params.pid;
     const userId = req.session.user._id;
-    console.log("el user id es " + userId);
-    console.log(req.session.user);
     const result = await cartController.addProductToCart(userId, productId);
 
     if (result && result.error) {
@@ -127,6 +123,7 @@ router.post("/products/:pid/add-to-cart", privateAccess, async (req, res) => {
 router.get("/carts/:cid", privateAccess, async (req, res) => {
   try {
     const cartId = req.params.cid;
+
     const cart = await cartController.getCartById(cartId);
 
     if (cart) {

@@ -16,35 +16,25 @@ class CartController {
     }
   }
 
-  async getCartById(req, res) {
+  async getCartById(paramcartId) {
+    console.log("llegamos");
     try {
-      const cartId = req.params.cartId;
+      const cartId = paramcartId;
+      console.log("cartd id " + cartId);
       const cart = await this.cartDAO.getCartById(cartId);
 
       if (cart) {
-        res.json({ cart });
+        // res.json({ cart });
+        return cart;
       } else {
-        res.status(404).json({ error: "Cart not found" });
+        // res.status(404).json({ error: "Cart not found" });
+        return;
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      // res.status(500).json({ error: error.message });
+      return;
     }
   }
-
-  // async addProductToCart(req, res) {
-  //   try {
-  //     const { cartId, productId } = req.params;
-  //     const result = await this.cartDAO.addProductToCart(cartId, productId);
-
-  //     if (result && result.error) {
-  //       return res.status(400).json({ error: result.error });
-  //     }
-
-  //     res.json({ cart: result });
-  //   } catch (error) {
-  //     res.status(500).json({ error: error.message });
-  //   }
-  // }
 
   async addProductToCart(userId, productId) {
     try {
