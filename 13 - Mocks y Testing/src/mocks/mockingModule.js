@@ -4,11 +4,15 @@ const generateMockProducts = () => {
   const mockProducts = [];
   for (let i = 1; i <= 100; i++) {
     mockProducts.push({
-      _id: `mockProductId${i}`,
-      name: `Mock Product ${i}`,
-      description: `Description for Mock Product ${i}`,
-      price: Math.floor(Math.random() * 100) + 1, // Random price between 1 and 100
-      // Add more fields if needed
+      _id: `iddelproducto${i}`,
+      title: `Producto mock ${i}`,
+      description: `Descripcion del producto ${i}`,
+      category: `Categoria del producto ${i}`,
+      status: true,
+      price: Math.floor(Math.random() * 100) + 1,
+      thumbnails: [`${i}.jpg`, `${i}.png`],
+      code: `CODE${i}`,
+      stock: Math.floor(Math.random() * 10) + 2,
     });
   }
   return mockProducts;
