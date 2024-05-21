@@ -14,7 +14,7 @@ router.post("/new-reset-request", async (req, res) => {
 
   const token = generateToken();
   user.resetToken = token;
-  user.resetTokenExpiry = Date.now() + 3600000; // 1 hour from now
+  user.resetTokenExpiry = Date.now() + 3600000;
   await user.save();
 
   sendResetEmail(user.email, token);
