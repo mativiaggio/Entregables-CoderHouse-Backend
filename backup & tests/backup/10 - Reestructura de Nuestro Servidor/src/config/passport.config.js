@@ -1,6 +1,6 @@
 const passport = require("passport");
 const local = require("passport-local");
-const { createHash, isValidPasword } = require("../utils");
+const { createHash, isValidPassword } = require("../utils");
 const userModel = require("../models/users");
 const GithubStrategy = require("passport-github2");
 const env_config = require("../config/config");
@@ -59,7 +59,7 @@ const initializePassport = () => {
           if (!user) {
             return done(null, false);
           }
-          if (!isValidPasword(user, password)) {
+          if (!isValidPassword(user, password)) {
             return done(null, false);
           }
 

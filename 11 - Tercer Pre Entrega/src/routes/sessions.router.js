@@ -2,7 +2,7 @@ const { Router } = require("express");
 const userModel = require("../models/users");
 const cartModel = require("../models/carts");
 const bcrypt = require("bcrypt");
-const { createHash, isValidPasword } = require("../utils");
+const { createHash, isValidPassword } = require("../utils");
 const passport = require("passport");
 
 const sessionRouter = Router();

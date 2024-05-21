@@ -5,12 +5,12 @@ const createHash = (password) => {
   return hashedPassword;
 };
 
-const isValidPasword = (user, password) => {
+const isValidPassword = (user, password) => {
   const isValid = bcrypt.compareSync(password, user.password);
   return isValid;
 };
 
 module.exports = {
   createHash,
-  isValidPasword,
+  isValidPassword,
 };
