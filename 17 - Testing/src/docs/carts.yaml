@@ -1,0 +1,224 @@
+openapi: 3.0.0
+info:
+  title: Carts API Documentation
+  version: 1.0.0
+  description: Documentación de la API para la gestión de carritos de compra
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+tags:
+  - name: Carts
+    description: Operaciones relacionadas con los carritos de compra
+paths:
+  /carts:
+    post:
+      summary: Crear un nuevo carrito
+      tags: [Carts]
+      responses:
+        "201":
+          description: Carrito creado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cartId:
+                    type: string
+                    example: 60c72b2f5f1b2c001c8e4d6b
+        "500":
+          description: Error al crear el carrito
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Descripción del error
+  /carts/{cartId}:
+    get:
+      summary: Obtener un carrito por su ID
+      tags: [Carts]
+      parameters:
+        - in: path
+          name: cartId
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Carrito obtenido exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cart:
+                    type: object
+                    example:
+                      { "cartId": "60c72b2f5f1b2c001c8e4d6b", "products": [] }
+        "404":
+          description: Carrito no encontrado
+        "500":
+          description: Error al obtener el carrito
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Descripción del error
+  /carts/{cartId}/products/{productId}:
+    post:
+      summary: Agregar un producto a un carrito
+      tags: [Carts]
+      parameters:
+        - in: path
+          name: cartId
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+        - in: path
+          name: productId
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto agregado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Producto agregado al carrito
+        "404":
+          description: Carrito o producto no encontrado
+        "500":
+          description: Error al agregar el producto al carrito
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Descripción del error
+    put:
+      summary: Actualizar la cantidad de un producto en un carrito
+      tags: [Carts]
+      parameters:
+        - in: path
+          name: cartId
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+        - in: path
+          name: productId
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: integer
+                  example: 2
+      responses:
+        "200":
+          description: Cantidad de producto actualizada exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Cantidad actualizada
+        "404":
+          description: Carrito o producto no encontrado
+        "500":
+          description: Error al actualizar la cantidad del producto
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Descripción del error
+    delete:
+      summary: Eliminar un producto de un carrito
+      tags: [Carts]
+      parameters:
+        - in: path
+          name: cartId
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+        - in: path
+          name: productId
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto eliminado del carrito
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Producto eliminado del carrito
+        "404":
+          description: Carrito o producto no encontrado
+        "500":
+          description: Error al eliminar el producto del carrito
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Descripción del error
+  /carts/{cartId}/purchase:
+    post:
+      summary: Realizar una compra con el carrito
+      tags: [Carts]
+      parameters:
+        - in: path
+          name: cartId
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+      responses:
+        "302":
+          description: Redirige a la página principal después de la compra
+        "500":
+          description: Error al realizar la compra
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Descripción del error

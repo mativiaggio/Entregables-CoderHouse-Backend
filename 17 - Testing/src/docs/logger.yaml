@@ -1,0 +1,30 @@
+openapi: 3.0.0
+info:
+  title: Logger Test API Documentation
+  version: 1.0.0
+  description: Documentación de la API para realizar pruebas de registro de logs
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+tags:
+  - name: LoggerTest
+    description: Operaciones relacionadas con las pruebas de registro de logs
+paths:
+  /loggertest:
+    get:
+      summary: Realizar pruebas de registro de logs
+      tags: [LoggerTest]
+      responses:
+        "200":
+          description: Pruebas de registro de logs realizadas exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Logger test
