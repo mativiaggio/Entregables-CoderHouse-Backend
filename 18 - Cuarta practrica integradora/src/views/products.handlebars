@@ -46,12 +46,16 @@
                   </ul>
                 </div>
                 <p class="card-text">
-                  <del>${{price}}</del>
+                  {{!-- <del>${{price}}</del>
                   <span
                     style="color: #c41431;"
                   >{{discountPercentage}}%OFF</span>
+                  <br /> --}}
+                  Propietario:
+                  {{owner}}
+                  <span style="color: #c41431;">Stock {{stock}}</span>
                   <br />
-                  <strong>${{discountedPrice}}</strong>
+                  <strong>${{price}}</strong>
                 </p>
               </div>
               <div class="card-footer">
@@ -62,6 +66,13 @@
                   onclick="addToCart('{{_id}}')"
                 >Agregar al Carrito</button>
               </div>
+              {{#if userAdmin}}
+                <button
+                  class="btn btn-danger delete-product-btn"
+                  data-product-id="{{_id}}"
+                  onclick="deleteProduct('{{_id}}')"
+                >Eliminar Producto</button>
+              {{/if}}
             </div>
           </div>
         {{/each}}

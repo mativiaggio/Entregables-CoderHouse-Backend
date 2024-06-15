@@ -1,0 +1,141 @@
+openapi: 3.0.0
+info:
+  title: API Documentation
+  version: 1.0.0
+  description: Documentación de la API para los módulos de productos, carrito y usuarios
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+tags:
+  - name: Sessions
+    description: Operaciones relacionadas con sesiones de usuario
+  - name: Users
+    description: Operaciones relacionadas con usuarios
+paths:
+  /api/sessions/register:
+    post:
+      summary: Registra un nuevo usuario
+      tags: [Sessions]
+      responses:
+        "302":
+          description: Redirige a la página de éxito con los detalles del usuario
+        "401":
+          description: Error de autenticación
+  /api/sessions/registerFail:
+    get:
+      summary: Muestra un error de autenticación en el registro
+      tags: [Sessions]
+      responses:
+        "401":
+          description: Error de autenticación
+  /api/sessions/login:
+    post:
+      summary: Inicia sesión de un usuario
+      tags: [Sessions]
+      responses:
+        "302":
+          description: Redirige a la página de éxito con los detalles del usuario
+        "401":
+          description: Error de inicio de sesión
+  /api/sessions/loginFail:
+    get:
+      summary: Muestra un error de inicio de sesión
+      tags: [Sessions]
+      responses:
+        "401":
+          description: Error de inicio de sesión
+  /api/sessions/logout:
+    get:
+      summary: Cierra la sesión del usuario
+      tags: [Sessions]
+      responses:
+        "302":
+          description: Redirige a la página de inicio de sesión
+        "500":
+          description: Error al destruir la sesión
+  /api/sessions/github:
+    get:
+      summary: Autentica al usuario con GitHub
+      tags: [Sessions]
+      responses:
+        "302":
+          description: Redirige a GitHub para autenticación
+  /api/sessions/githubcallback:
+    get:
+      summary: Callback para la autenticación de GitHub
+      tags: [Sessions]
+      responses:
+        "302":
+          description: Redirige a la página principal después de la autenticación exitosa
+        "401":
+          description: Error de autenticación
+  /api/sessions/current:
+    get:
+      summary: Obtiene la sesión actual del usuario
+      tags: [Sessions]
+      responses:
+        "200":
+          description: Devuelve la sesión actual del usuario
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 60c72b2f5f1b2c001c8e4d6b
+                      name:
+                        type: string
+                        example: John Doe
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      age:
+                        type: integer
+                        example: 30
+                      cartId:
+                        type: string
+                        example: 60c72b2f5f1b2c001c8e4d6c
+                      role:
+                        type: string
+                        example: user
+        "401":
+          description: No hay usuario logueado
+  /users/premium/{uid}:
+    put:
+      summary: Actualiza el rol de un usuario a premium
+      tags: [Users]
+      parameters:
+        - in: path
+          name: uid
+          required: true
+          description: ID del usuario
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Rol de usuario actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Rol de usuario actualizado exitosamente
+                  user:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 60c72b2f5f1b2c001c8e4d6b
+                      role:
+                        type: string
+                        example: premium
+        "404":
+          description: Usuario no encontrado
+        "500":
+          description: Error interno del servidor

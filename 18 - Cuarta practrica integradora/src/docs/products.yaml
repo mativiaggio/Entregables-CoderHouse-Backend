@@ -1,0 +1,192 @@
+openapi: 3.0.0
+info:
+  title: Products API Documentation
+  version: 1.0.0
+  description: Documentación de la API para la gestión de productos
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+tags:
+  - name: Products
+    description: Operaciones relacionadas con los productos
+paths:
+  /products:
+    get:
+      summary: Obtener todos los productos
+      tags: [Products]
+      responses:
+        "200":
+          description: Lista de productos obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "500":
+          description: Error al obtener los productos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Error interno del servidor
+    post:
+      summary: Agregar un nuevo producto
+      tags: [Products]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductInput"
+      responses:
+        "201":
+          description: Producto agregado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "500":
+          description: Error al agregar el producto
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Error interno del servidor
+  /products/{pid}:
+    get:
+      summary: Obtener un producto por su ID
+      tags: [Products]
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto obtenido exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Producto no encontrado
+        "500":
+          description: Error al obtener el producto
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Error interno del servidor
+    put:
+      summary: Actualizar un producto por su ID
+      tags: [Products]
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductInput"
+      responses:
+        "200":
+          description: Producto actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Producto no encontrado
+        "500":
+          description: Error al actualizar el producto
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Error interno del servidor
+    delete:
+      summary: Eliminar un producto por su ID
+      tags: [Products]
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto eliminado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Producto eliminado exitosamente
+        "404":
+          description: Producto no encontrado
+        "500":
+          description: Error al eliminar el producto
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Error interno del servidor
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 60c72b2f5f1b2c001c8e4d6b
+        name:
+          type: string
+          example: Product Name
+        description:
+          type: string
+          example: Product Description
+        price:
+          type: number
+          example: 19.99
+    ProductInput:
+      type: object
+      required:
+        - name
+        - description
+        - price
+      properties:
+        name:
+          type: string
+          example: New Product
+        description:
+          type: string
+          example: New Product Description
+        price:
+          type: number
+          example: 29

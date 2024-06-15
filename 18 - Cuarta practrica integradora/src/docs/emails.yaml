@@ -1,0 +1,117 @@
+openapi: 3.0.0
+info:
+  title: Emails API Documentation
+  version: 1.0.0
+  description: Documentación de la API para el envío de correos electrónicos
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+tags:
+  - name: Emails
+    description: Operaciones relacionadas con el envío de correos electrónicos
+paths:
+  /emails/test-email:
+    get:
+      summary: Enviar un correo electrónico de prueba
+      tags: [Emails]
+      parameters:
+        - in: query
+          name: destination
+          required: true
+          description: Dirección de correo electrónico de destino
+          schema:
+            type: string
+      responses:
+        "302":
+          description: Redirige a la página principal después de enviar el correo
+        "500":
+          description: Error al enviar el correo electrónico
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  error:
+                    type: string
+                    example: Descripción del error
+  /emails/successfully-registered:
+    get:
+      summary: Enviar un correo electrónico de registro exitoso
+      tags: [Emails]
+      parameters:
+        - in: query
+          name: destination
+          required: true
+          description: Dirección de correo electrónico de destino
+          schema:
+            type: string
+        - in: query
+          name: firstname
+          required: true
+          description: Nombre del usuario
+          schema:
+            type: string
+        - in: query
+          name: lastname
+          required: true
+          description: Apellido del usuario
+          schema:
+            type: string
+      responses:
+        "302":
+          description: Redirige a la página principal después de enviar el correo
+        "500":
+          description: Error al enviar el correo electrónico
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  error:
+                    type: string
+                    example: Descripción del error
+  /emails/successfully-login:
+    get:
+      summary: Enviar un correo electrónico de inicio de sesión exitoso
+      tags: [Emails]
+      parameters:
+        - in: query
+          name: destination
+          required: true
+          description: Dirección de correo electrónico de destino
+          schema:
+            type: string
+        - in: query
+          name: firstname
+          required: true
+          description: Nombre del usuario
+          schema:
+            type: string
+        - in: query
+          name: lastname
+          required: true
+          description: Apellido del usuario
+          schema:
+            type: string
+      responses:
+        "302":
+          description: Redirige a la página principal después de enviar el correo
+        "500":
+          description: Error al enviar el correo electrónico
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  error:
+                    type: string
+                    example: Descripción del error
